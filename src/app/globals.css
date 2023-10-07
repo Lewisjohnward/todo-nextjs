@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
     background: white;
+}
+
+.tooltip-arrow-no-tail {
+  display: none;
 }

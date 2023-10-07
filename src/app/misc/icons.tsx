@@ -7,6 +7,7 @@ import {
   AiOutlineCheckCircle,
   AiOutlineQuestionCircle,
 } from "react-icons/ai";
+import { BsChevronDown } from "react-icons/bs";
 
 const InboxIcon = () => {
   return (
@@ -22,8 +23,78 @@ const InboxIcon = () => {
   );
 };
 
+const TodayIcon = () => {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24">
+      <g fill="currentColor" fill-rule="evenodd">
+        <path
+          fill-rule="nonzero"
+          d="M6 4.5h12A1.5 1.5 0 0 1 19.5 6v2.5h-15V6A1.5 1.5 0 0 1 6 4.5z"
+          opacity=".1"
+        ></path>
+        <path
+          fill-rule="nonzero"
+          d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6zm1 3h10a.5.5 0 1 1 0 1H7a.5.5 0 0 1 0-1z"
+        ></path>
+        <text
+          font-family="-apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+          font-size="9"
+          transform="translate(4 2)"
+          font-weight="500"
+        >
+          <tspan x="8" y="15" text-anchor="middle">
+            07
+          </tspan>
+        </text>
+      </g>
+    </svg>
+  );
+};
+
+const UpcomingIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <g fill="currentColor" fill-rule="nonzero">
+        <path
+          d="M6 4.5h12A1.5 1.5 0 0 1 19.5 6v2.5h-15V6A1.5 1.5 0 0 1 6 4.5z"
+          opacity="0.1"
+        ></path>
+        <path d="M6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H6zm10 12a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm8-4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm-4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM7 8h10a.5.5 0 1 1 0 1H7a.5.5 0 0 1 0-1z"></path>
+      </g>
+    </svg>
+  );
+};
+
+const FiltersAndLabelsIcon = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M13 6.5A1.5 1.5 0 0 1 14.5 5h3A1.5 1.5 0 0 1 19 6.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 13 9.5v-3zM6.5 13A1.5 1.5 0 0 0 5 14.5v3A1.5 1.5 0 0 0 6.5 19h3a1.5 1.5 0 0 0 1.5-1.5v-3A1.5 1.5 0 0 0 9.5 13h-3zm8 0a1.5 1.5 0 0 0-1.5 1.5v3a1.5 1.5 0 0 0 1.5 1.5h3a1.5 1.5 0 0 0 1.5-1.5v-3a1.5 1.5 0 0 0-1.5-1.5h-3zm-8-8A1.5 1.5 0 0 0 5 6.5v3A1.5 1.5 0 0 0 6.5 11h3A1.5 1.5 0 0 0 11 9.5v-3A1.5 1.5 0 0 0 9.5 5h-3z"
+        clip-rule="evenodd"
+        opacity="0.1"
+      ></path>
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M17.5 6h-3a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 13 6.5v3a1.5 1.5 0 0 0 1.5 1.5h3A1.5 1.5 0 0 0 19 9.5v-3A1.5 1.5 0 0 0 17.5 5h-3zm-8 9h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5zm-1.5.5A1.5 1.5 0 0 1 6.5 13h3a1.5 1.5 0 0 1 1.5 1.5v3A1.5 1.5 0 0 1 9.5 19h-3A1.5 1.5 0 0 1 5 17.5v-3zm9.5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5zm-1.5.5a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a1.5 1.5 0 0 1-1.5-1.5v-3zM6.5 6h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+  );
+};
+
 export {
   InboxIcon,
+  TodayIcon,
+  UpcomingIcon,
+  FiltersAndLabelsIcon,
   RiMenuLine,
   AiOutlineHome,
   AiOutlineSearch,
@@ -31,4 +102,5 @@ export {
   AiOutlinePlus,
   AiOutlineCheckCircle,
   AiOutlineQuestionCircle,
+  BsChevronDown,
 };

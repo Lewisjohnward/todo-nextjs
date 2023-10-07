@@ -11,6 +11,8 @@ const config: Config = {
       animation: {
         slidein: "slidein 2s ease-in-out",
         slideout: "slideout 2s ease-in-out forwards",
+        fadein: "fadein 500ms ease-in-out forwards",
+        fadeout: "fadeout 500ms ease-in-out forwards",
       },
       keyframes: {
         slidein: {
@@ -20,6 +22,14 @@ const config: Config = {
         slideout: {
           "0%": { transform: "translateX(0px)" },
           "100%": { transform: "translateX(-400px)" },
+        },
+        fadein: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "100" },
+        },
+        fadeout: {
+          "0%": { opacity: "100" },
+          "100%": { opacity: "0" },
         },
       },
       backgroundImage: {
