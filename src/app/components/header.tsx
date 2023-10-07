@@ -6,7 +6,7 @@ import {
   AiFillStar,
   AiOutlinePlus,
   AiOutlineCheckCircle,
-  AiOutlineInfoCircle,
+  AiOutlineQuestionCircle,
 } from "@/misc/icons";
 import { ReactNode, SetStateAction } from "react";
 import Avatar from "react-avatar";
@@ -68,7 +68,7 @@ const Header = ({
             </div>
           }
         />
-        <Button icon={<AiOutlineInfoCircle />} />
+        <Button icon={<AiOutlineQuestionCircle />} />
 
         <Tooltip id="home" />
         <Button

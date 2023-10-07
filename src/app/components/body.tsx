@@ -1,17 +1,11 @@
-import Navigation from "@/components/navbar";
-import clsx from "clsx";
+import NavBar from "@/components/navbar";
 
-const Body = ({ navVisible }: { navVisible: any }) => {
+const Body = () => {
   return (
-    <div
-      className={clsx(
-        "flex h-full bg-white transition-transform duration-1000",
-        !navVisible && "-translate-x-[300px]"
-      )}
-    >
-      <Navigation />
-      <div className="w-full bg-white ">
-        <div className="bg-red-50">hello</div>
+    <div className={"flex h-full bg-white transition-transform duration-1000"}>
+      <div className="flex w-full bg-white ">
+        <NavBar />
+        <div className="flex-grow bg-red-50">hello</div>
       </div>
     </div>
   );
