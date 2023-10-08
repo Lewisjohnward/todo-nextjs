@@ -15,9 +15,9 @@ import { Tooltip } from "react-tooltip";
 
 const SearchButton = () => {
   return (
-    <button className="flex items-center h-full bg-white/20 gap-2 px-2 py-2 pr-20 rounded hover:bg-white hover:text-gray-400 hover:[&>*]:placeholder:text-gray-400 transition-colors duration-300 active:scale-95">
-      <AiOutlineSearch className="h-full" />
-      <p className="duration-300">Search</p>
+    <button className="flex-grow md:flex-grow-0 flex items-center bg-white/20 gap-2 px-2 py-[2px] pr-20 rounded hover:bg-white hover:text-gray-400 hover:[&>*]:placeholder:text-gray-400 transition-colors duration-300 active:scale-95">
+      <AiOutlineSearch className="hidden sm:block" />
+      Search
     </button>
   );
 };
@@ -45,8 +45,8 @@ const Header = ({
   setNavVisible: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <header className="flex justify-between items-center py-1 px-8 bg-red-600/80 text-white">
-      <div className="flex items-center gap-4">
+    <header className="flex justify-between items-center gap-2 py-[2px] px-8 bg-red-600/80 text-white">
+      <div className="flex-grow flex items-center gap-4">
         <Button
           icon={<RiMenuLine />}
           onClick={() => setNavVisible((prev) => !prev)}
@@ -55,16 +55,16 @@ const Header = ({
         <SearchButton />
       </div>
       <div className="flex items-center gap-4">
-        <button className="flex items-center py-1 px-4 bg-white/20 rounded hover:bg-black/20 transition-colors duration-300">
+        <button className="flex items-center gap-2 py-[6px] md:py-[1px] px-4 bg-white/20 rounded hover:bg-black/20 transition-colors duration-300 active:scale-95">
           <AiFillStar className="text-yellow-200" />
-          <p>Upgrade to pro</p>
+          <p className="hidden md:block">Upgrade to pro</p>
         </button>
         <Button icon={<AiOutlinePlus />} />
         <Button
           icon={
             <div className="flex gap-2">
               <AiOutlineCheckCircle className="text-2xl" />
-              <p className="text-sm">5/7</p>
+              <p className="hidden md:inline-block text-sm">5/7</p>
             </div>
           }
         />
