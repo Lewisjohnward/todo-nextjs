@@ -41,6 +41,25 @@ const demoProjects = [
   { title: "Try Boards", tasks: 9 },
 ];
 
+const Project = ({
+  project,
+}: {
+  project: { title: string; tasks: number };
+}) => {
+  return (
+    <button
+      key={project.title}
+      className="flex items-center justify-between rounded p-2 hover:bg-gray-500/10"
+    >
+      <div className="flex items-center gap-3">
+        <div className="w-2 h-2 bg-gray-300 rounded-full" />
+        <p>{project.title}</p>
+      </div>
+      <p className="text-sm text-gray-400">{project.tasks}</p>
+    </button>
+  );
+};
+
 const NavBar = () => {
   const [mouseEnter, setMouseEnter] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(true);
@@ -60,29 +79,28 @@ const NavBar = () => {
       onMouseLeave={handleMouseOver}
     >
       <div className="flex flex-col">
-        {navItems.map((d) => (
-          <>
+        {navItems.map((navItem) => (
+          <button key={navItem.name}>
             <Tooltip
-              id={d.tooltip.id}
+              id={navItem.tooltip.id}
               style={{ padding: "0px 5px" }}
               classNameArrow="tooltip-arrow-no-tail"
             />
-            <button
+            <div
               className="flex gap-2 rounded py-2 hover:bg-gray-500/10"
-              key={d.name}
-              data-tooltip-id={d.tooltip.id}
-              data-tooltip-content={d.tooltip.content}
+              data-tooltip-id={navItem.tooltip.id}
+              data-tooltip-content={navItem.tooltip.content}
               data-tooltip-place="right"
               data-tooltip-delay-show={400}
             >
-              <span className={d.color}>{d.icon}</span>
-              <p>{d.name}</p>
-            </button>
-          </>
+              <span className={navItem.color}>{navItem.icon}</span>
+              <p>{navItem.name}</p>
+            </div>
+          </button>
         ))}
       </div>
       <div>
-        <button className="w-full flex justify-between items-center pl-1 py-1 bg-gray-200/50 rounded">
+        <div className="w-full flex justify-between items-center pl-1 py-1 bg-gray-200/50 rounded">
           <p className="font-semibold">Projects</p>
           <div
             className={clsx(mouseEnter ? "animate-fadein" : "animate-fadeout")}
@@ -100,19 +118,10 @@ const NavBar = () => {
               />
             </button>
           </div>
-        </button>
+        </div>
         <div className="flex flex-col">
           {demoProjects.map((project) => (
-            <button
-              key={project.title}
-              className="flex items-center justify-between rounded p-2 hover:bg-gray-500/10"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 bg-gray-300 rounded-full" />
-                <p>{project.title}</p>
-              </div>
-              <p className="text-sm text-gray-400">{project.tasks}</p>
-            </button>
+            <Project key={project.title} project={project} />
           ))}
         </div>
       </div>
