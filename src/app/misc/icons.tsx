@@ -6,6 +6,7 @@ import {
   AiOutlinePlus,
   AiOutlineCheckCircle,
   AiOutlineQuestionCircle,
+  AiOutlineEllipsis,
 } from "react-icons/ai";
 import { BsChevronDown } from "react-icons/bs";
 
@@ -102,5 +103,6 @@ export {
   AiOutlinePlus,
   AiOutlineCheckCircle,
   AiOutlineQuestionCircle,
+  AiOutlineEllipsis,
   BsChevronDown,
 };

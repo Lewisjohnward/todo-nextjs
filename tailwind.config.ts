@@ -11,8 +11,8 @@ const config: Config = {
       animation: {
         slidein: "slidein 2s ease-in-out",
         slideout: "slideout 2s ease-in-out forwards",
-        fadein: "fadein 500ms ease-in-out forwards",
-        fadeout: "fadeout 500ms ease-in-out forwards",
+        fadein: "fadein 300ms ease-in-out forwards",
+        fadeout: "fadeout 300ms ease-in-out forwards",
       },
       keyframes: {
         slidein: {

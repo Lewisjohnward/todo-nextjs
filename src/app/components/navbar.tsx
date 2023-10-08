@@ -7,6 +7,7 @@ import {
   AiOutlinePlus,
   BsChevronDown,
   FiltersAndLabelsIcon,
+  AiOutlineEllipsis,
 } from "@/misc/icons";
 import { Tooltip } from "react-tooltip";
 const navItems = [
@@ -46,17 +47,52 @@ const Project = ({
 }: {
   project: { title: string; tasks: number };
 }) => {
+  const [menuIconVisible, setMenuIconVisible] = useState(false);
+  const handleMouseOver = () => {
+    setMenuIconVisible((prev) => !prev);
+  };
   return (
-    <button
-      key={project.title}
-      className="flex items-center justify-between rounded p-2 hover:bg-gray-500/10"
-    >
-      <div className="flex items-center gap-3">
-        <div className="w-2 h-2 bg-gray-300 rounded-full" />
-        <p>{project.title}</p>
+    <>
+      <Tooltip
+        id={project.title}
+        style={{ padding: "2px 5px" }}
+        classNameArrow="tooltip-arrow-no-tail"
+      />
+
+      <div
+        className="flex items-center justify-between rounded cursor-pointer hover:bg-gray-500/10"
+        onMouseEnter={handleMouseOver}
+        onMouseLeave={handleMouseOver}
+      >
+        <div
+          key={project.title}
+          data-tooltip-id={project.title}
+          data-tooltip-content={project.title}
+          data-tooltip-place="bottom"
+          data-tooltip-delay-show={400}
+          className="flex items-center gap-3 p-2 w-full"
+        >
+          <div className="w-2 h-2 bg-gray-300 rounded-full" />
+          <button>{project.title}</button>
+        </div>
+        <Tooltip
+          id="ellipsis"
+          style={{ padding: "2px 5px" }}
+          classNameArrow="tooltip-arrow-no-tail"
+        />
+        {menuIconVisible ? (
+          <AiOutlineEllipsis
+            data-tooltip-id="ellipsis"
+            data-tooltip-content="More project actions"
+            data-tooltip-place="top"
+            data-tooltip-delay-show={400}
+            className="animate-fadein text-xl text-gray-400"
+          />
+        ) : (
+          <p className="text-sm text-gray-400">{project.tasks}</p>
+        )}
       </div>
-      <p className="text-sm text-gray-400">{project.tasks}</p>
-    </button>
+    </>
   );
 };
 
@@ -80,35 +116,60 @@ const NavBar = () => {
     >
       <div className="flex flex-col">
         {navItems.map((navItem) => (
-          <button key={navItem.name}>
+          <>
             <Tooltip
               id={navItem.tooltip.id}
               style={{ padding: "0px 5px" }}
               classNameArrow="tooltip-arrow-no-tail"
             />
             <div
-              className="flex gap-2 rounded py-2 hover:bg-gray-500/10"
+              key={navItem.name}
+              className="hover:bg-gray-500/10 cursor-pointer"
               data-tooltip-id={navItem.tooltip.id}
               data-tooltip-content={navItem.tooltip.content}
               data-tooltip-place="right"
               data-tooltip-delay-show={400}
             >
-              <span className={navItem.color}>{navItem.icon}</span>
-              <p>{navItem.name}</p>
+              <button className="flex gap-2 rounded py-2">
+                <span className={navItem.color}>{navItem.icon}</span>
+                <p>{navItem.name}</p>
+              </button>
             </div>
-          </button>
+          </>
         ))}
       </div>
       <div>
-        <div className="w-full flex justify-between items-center pl-1 py-1 bg-gray-200/50 rounded">
-          <p className="font-semibold">Projects</p>
+        <div className="w-full flex justify-between items-center pl-1 py-1 rounded hover:bg-gray-200/50">
+          <p className="font-semibold text-gray-500">Projects</p>
           <div
             className={clsx(mouseEnter ? "animate-fadein" : "animate-fadeout")}
           >
-            <button className="p-2 rounded hover:bg-white/50">
+            <Tooltip
+              id="addIcon"
+              style={{ padding: "0px 5px" }}
+              classNameArrow="tooltip-arrow-no-tail"
+            />
+            <button
+              data-tooltip-id="addIcon"
+              data-tooltip-content="Add project"
+              data-tooltip-place="top"
+              data-tooltip-delay-show={400}
+              className="p-2 rounded hover:bg-white/50"
+            >
               <AiOutlinePlus />
             </button>
-            <button className="p-2 rounded hover:bg-white/50">
+            <Tooltip
+              id="chevron"
+              style={{ padding: "0px 5px" }}
+              classNameArrow="tooltip-arrow-no-tail"
+            />
+            <button
+              data-tooltip-id="chevron"
+              data-tooltip-content="Toggle list of projects"
+              data-tooltip-place="top"
+              data-tooltip-delay-show={400}
+              className="p-2 rounded hover:bg-white/50"
+            >
               <BsChevronDown
                 className={clsx(
                   "transition-transform duration-300",
