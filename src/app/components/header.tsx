@@ -45,7 +45,7 @@ const Header = ({
   setNavVisible: React.Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <header className="flex justify-between items-center py-1 px-8 bg-red-700 text-white">
+    <header className="flex justify-between items-center py-1 px-8 bg-red-600/80 text-white">
       <div className="flex items-center gap-4">
         <Button
           icon={<RiMenuLine />}
