@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import clsx from "clsx";
 import {
   InboxIcon,
@@ -96,7 +96,7 @@ const Project = ({
   );
 };
 
-const NavBar = () => {
+const NavBar = ({ navVisible }: { navVisible: boolean }) => {
   const [mouseEnter, setMouseEnter] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(true);
 
@@ -110,80 +110,87 @@ const NavBar = () => {
 
   return (
     <nav
-      className="min-w-[300px] bg-gray-50 pt-8 p-6 space-y-2"
+      className={clsx(
+        "fixed z-50 h-full overflow-clip bg-gray-50 space-y-2 transition-all duration-300",
+        navVisible ? "left-0" : "-left-[300px]"
+      )}
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseOver}
     >
-      <div className="flex flex-col">
-        {navItems.map((navItem) => (
-          <>
-            <Tooltip
-              id={navItem.tooltip.id}
-              style={{ padding: "0px 5px" }}
-              classNameArrow="tooltip-arrow-no-tail"
-            />
+      <div className="w-[300px] p-8">
+        <div className="flex flex-col">
+          {navItems.map((navItem) => (
+            <>
+              <Tooltip
+                id={navItem.tooltip.id}
+                style={{ padding: "0px 5px" }}
+                classNameArrow="tooltip-arrow-no-tail"
+              />
+              <div
+                key={navItem.name}
+                className="hover:bg-gray-500/10 cursor-pointer"
+                data-tooltip-id={navItem.tooltip.id}
+                data-tooltip-content={navItem.tooltip.content}
+                data-tooltip-place="right"
+                data-tooltip-delay-show={400}
+              >
+                <button className="flex gap-2 rounded py-2">
+                  <span className={navItem.color}>{navItem.icon}</span>
+                  <p>{navItem.name}</p>
+                </button>
+              </div>
+            </>
+          ))}
+        </div>
+        <div>
+          <div className="w-full flex justify-between items-center pl-1 py-1 rounded hover:bg-gray-200/50">
+            <p className="font-semibold text-gray-500">Projects</p>
             <div
-              key={navItem.name}
-              className="hover:bg-gray-500/10 cursor-pointer"
-              data-tooltip-id={navItem.tooltip.id}
-              data-tooltip-content={navItem.tooltip.content}
-              data-tooltip-place="right"
-              data-tooltip-delay-show={400}
+              className={clsx(
+                mouseEnter ? "animate-fadein" : "animate-fadeout"
+              )}
             >
-              <button className="flex gap-2 rounded py-2">
-                <span className={navItem.color}>{navItem.icon}</span>
-                <p>{navItem.name}</p>
+              <Tooltip
+                id="addIcon"
+                style={{ padding: "0px 5px" }}
+                classNameArrow="tooltip-arrow-no-tail"
+              />
+              <button
+                data-tooltip-id="addIcon"
+                data-tooltip-content="Add project"
+                data-tooltip-place="top"
+                data-tooltip-delay-show={400}
+                className="p-2 rounded hover:bg-white/50"
+              >
+                <AiOutlinePlus />
+              </button>
+              <Tooltip
+                id="chevron"
+                style={{ padding: "0px 5px" }}
+                classNameArrow="tooltip-arrow-no-tail"
+              />
+              <button
+                data-tooltip-id="chevron"
+                data-tooltip-content="Toggle list of projects"
+                data-tooltip-place="top"
+                data-tooltip-delay-show={400}
+                className="p-2 rounded hover:bg-white/50"
+              >
+                <BsChevronDown
+                  className={clsx(
+                    "transition-transform duration-300",
+                    !projectsOpen && "rotate-90"
+                  )}
+                  onClick={handleProjectsOpen}
+                />
               </button>
             </div>
-          </>
-        ))}
-      </div>
-      <div>
-        <div className="w-full flex justify-between items-center pl-1 py-1 rounded hover:bg-gray-200/50">
-          <p className="font-semibold text-gray-500">Projects</p>
-          <div
-            className={clsx(mouseEnter ? "animate-fadein" : "animate-fadeout")}
-          >
-            <Tooltip
-              id="addIcon"
-              style={{ padding: "0px 5px" }}
-              classNameArrow="tooltip-arrow-no-tail"
-            />
-            <button
-              data-tooltip-id="addIcon"
-              data-tooltip-content="Add project"
-              data-tooltip-place="top"
-              data-tooltip-delay-show={400}
-              className="p-2 rounded hover:bg-white/50"
-            >
-              <AiOutlinePlus />
-            </button>
-            <Tooltip
-              id="chevron"
-              style={{ padding: "0px 5px" }}
-              classNameArrow="tooltip-arrow-no-tail"
-            />
-            <button
-              data-tooltip-id="chevron"
-              data-tooltip-content="Toggle list of projects"
-              data-tooltip-place="top"
-              data-tooltip-delay-show={400}
-              className="p-2 rounded hover:bg-white/50"
-            >
-              <BsChevronDown
-                className={clsx(
-                  "transition-transform duration-300",
-                  !projectsOpen && "rotate-90"
-                )}
-                onClick={handleProjectsOpen}
-              />
-            </button>
           </div>
-        </div>
-        <div className="flex flex-col">
-          {demoProjects.map((project) => (
-            <Project key={project.title} project={project} />
-          ))}
+          <div className="flex flex-col">
+            {demoProjects.map((project) => (
+              <Project key={project.title} project={project} />
+            ))}
+          </div>
         </div>
       </div>
     </nav>

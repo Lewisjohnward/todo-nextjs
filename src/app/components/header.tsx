@@ -44,13 +44,16 @@ const Header = ({
 }: {
   setNavVisible: React.Dispatch<SetStateAction<boolean>>;
 }) => {
+  const toggleNav = () => {
+    setNavVisible((prev) => !prev);
+  };
+
   return (
     <header className="flex justify-between items-center gap-2 py-[2px] px-8 bg-red-600/80 text-white">
       <div className="flex-grow flex items-center gap-4">
-        <Button
-          icon={<RiMenuLine />}
-          onClick={() => setNavVisible((prev) => !prev)}
-        />
+        <button onClick={toggleNav}>
+          <RiMenuLine />
+        </button>
         <Button icon={<AiOutlineHome />} />
         <SearchButton />
       </div>

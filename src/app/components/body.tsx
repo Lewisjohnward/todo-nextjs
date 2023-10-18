@@ -1,11 +1,16 @@
+"use client";
+import { useState } from "react";
 import NavBar from "@/components/navbar";
+import Main from "@/components/main";
+import clsx from "clsx";
 
 const Body = () => {
+  const [navVisible, setNavVisible] = useState(true);
   return (
-    <div className={"flex h-full bg-white transition-transform duration-1000"}>
-      <div className="flex w-full bg-white ">
-        <NavBar />
-        <div className="flex-grow bg-red-50">hello</div>
+    <div className="flex h-full">
+      <div className="flex w-full">
+        <NavBar navVisible={navVisible} setNavVisible={setNavVisible} />
+        <Main navVisible={navVisible} setNavVisible={setNavVisible} />
       </div>
     </div>
   );
