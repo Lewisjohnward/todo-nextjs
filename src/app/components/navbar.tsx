@@ -111,7 +111,7 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
   return (
     <nav
       className={clsx(
-        "fixed z-50 h-full overflow-clip bg-gray-50 space-y-2 transition-all duration-300",
+        "fixed z-50 h-full bg-gray-50 space-y-2 transition-all duration-300",
         navVisible ? "left-0" : "-left-[300px]"
       )}
       onMouseEnter={handleMouseOver}

@@ -10,7 +10,7 @@ const homeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       <Header setNavVisible={setNavVisible} />
-      <div className="flex w-full">
+      <div className="flex w-full h-full">
         <NavBar navVisible={navVisible} />
         <div
           className={clsx(
