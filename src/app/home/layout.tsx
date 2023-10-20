@@ -8,14 +8,14 @@ import clsx from "clsx";
 const homeLayout = ({ children }: { children: ReactNode }) => {
   const [navVisible, setNavVisible] = useState(true);
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header setNavVisible={setNavVisible} />
       <div className="flex w-full h-full">
         <NavBar navVisible={navVisible} />
         <div
           className={clsx(
             "transition-all duration-300",
-            navVisible ? "ml-[300px]" : "ml-0"
+            navVisible ? "md:ml-[300px]" : "ml-0"
           )}
         >
           {children}
