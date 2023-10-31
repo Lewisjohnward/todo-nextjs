@@ -10,30 +10,38 @@ import {
   AiOutlineEllipsis,
 } from "@/misc/icons";
 import { Tooltip } from "react-tooltip";
+import Link from "next/link";
+
+const path = "/home";
+
 const navItems = [
   {
     name: "Inbox",
     icon: <InboxIcon />,
     color: "text-blue-700",
     tooltip: { id: "inbox", content: "Go to Inbox" },
+    href: `${path}/inbox`,
   },
   {
     name: "Today",
     icon: <TodayIcon />,
     color: "text-green-700",
     tooltip: { id: "today", content: "Go to Today" },
+    href: `${path}/today`,
   },
   {
     name: "Upcoming",
     icon: <InboxIcon />,
     color: "text-purple-700",
     tooltip: { id: "upcoming", content: "Go to Upcoming" },
+    href: `${path}/upcoming`,
   },
   {
     name: "Filters & Labels",
     icon: <FiltersAndLabelsIcon />,
     color: "text-orange-700",
     tooltip: { id: "filtersandlabels", content: "Go to Filters & Labels" },
+    href: `${path}/filters-labels`,
   },
 ];
 
@@ -134,10 +142,10 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
                 data-tooltip-place="right"
                 data-tooltip-delay-show={400}
               >
-                <button className="flex gap-2 rounded py-2">
+                <Link href={navItem.href} className="flex gap-2 rounded py-2">
                   <span className={navItem.color}>{navItem.icon}</span>
                   <p>{navItem.name}</p>
-                </button>
+                </Link>
               </div>
             </>
           ))}
