@@ -11,6 +11,7 @@ import {
 } from "@/misc/icons";
 import { Tooltip } from "react-tooltip";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const path = "/home";
 
@@ -108,6 +109,8 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
   const [mouseEnter, setMouseEnter] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(true);
 
+  const pathname = usePathname();
+
   const handleMouseOver = () => {
     setMouseEnter((prev) => !prev);
   };
@@ -144,7 +147,14 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
               >
                 <Link href={navItem.href} className="flex gap-2 py-1 px-1">
                   <span className={navItem.color}>{navItem.icon}</span>
-                  <p className="text-sm">{navItem.name}</p>
+                  <p
+                    className={clsx(
+                      "text-sm",
+                      navItem.href == pathname && "text-red-600/80"
+                    )}
+                  >
+                    {navItem.name}
+                  </p>
                 </Link>
               </div>
             </>
