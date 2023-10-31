@@ -81,7 +81,7 @@ const Project = ({
           className="flex items-center gap-3 p-2 w-full"
         >
           <div className="w-2 h-2 bg-gray-300 rounded-full" />
-          <button>{project.title}</button>
+          <button className="text-sm">{project.title}</button>
         </div>
         <Tooltip
           id="ellipsis"
@@ -125,7 +125,7 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
       onMouseEnter={handleMouseOver}
       onMouseLeave={handleMouseOver}
     >
-      <div className="w-[300px] p-8">
+      <div className="w-[300px] p-6">
         <div className="flex flex-col">
           {navItems.map((navItem) => (
             <>
@@ -136,15 +136,15 @@ const NavBar = ({ navVisible }: { navVisible: boolean }) => {
               />
               <div
                 key={navItem.name}
-                className="hover:bg-gray-500/10 cursor-pointer"
+                className="hover:bg-gray-500/10 cursor-pointer rounded"
                 data-tooltip-id={navItem.tooltip.id}
                 data-tooltip-content={navItem.tooltip.content}
                 data-tooltip-place="right"
                 data-tooltip-delay-show={400}
               >
-                <Link href={navItem.href} className="flex gap-2 rounded py-2">
+                <Link href={navItem.href} className="flex gap-2 py-1 px-1">
                   <span className={navItem.color}>{navItem.icon}</span>
-                  <p>{navItem.name}</p>
+                  <p className="text-sm">{navItem.name}</p>
                 </Link>
               </div>
             </>
